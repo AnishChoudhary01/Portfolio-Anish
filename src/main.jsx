@@ -65,8 +65,13 @@ function UiUxPreview({ type }) {
   return <div className={`uiux-preview uiux-${type}`} aria-hidden="true"><div className="uiux-window-bar"><span /><span /><span /></div>{type === 'busease' && <><div className="uiux-map" /><div className="uiux-route" /><div className="uiux-phone-card"><small>YOUR ROUTE</small><b>Route 23</b><em>8 min</em></div></>}{type === 'sharecircle' && <><div className="uiux-market-card"><small>FIND SOMETHING</small><b>ShareCircle</b><div className="uiux-item-row"><i /><span /><span /></div><div className="uiux-item-row"><i /><span /><span /></div></div><div className="uiux-orbit" /></>}{type === 'ustart' && <><div className="uiux-mobile-screen"><small>WELCOME, DRIVER</small><b>Ready to<br />get started?</b><div className="uiux-progress" /><span>हिंदी · English</span></div><div className="uiux-mobile-screen second"><small>YOUR NEXT RIDE</small><b>Pickup<br />in 8 min</b><div className="uiux-progress" /></div></>}</div>;
 }
 
-function UiUxCard({ project }) {
-  return <article className="uiux-card"><UiUxPreview type={project.visual} /><div className="uiux-card-body"><span className="uiux-number">{project.number} / {project.type}</span><h2>{project.name}</h2><p>{project.description}</p><div className="tag-row">{project.methods.map(method => <span key={method}>{method}</span>)}</div><a className="uiux-case-link" href={`/projects/ui-ux/${project.slug}`}>View Case Study <ArrowUpRight size={15} /></a></div></article>;
+function UiUxCard({ project, technical = false }) {
+  const methods = technical ? project.tags : project.methods;
+  const detailHref = technical ? `/projects/${slugify(project.name)}` : `/projects/ui-ux/${project.slug}`;
+  return <article className={`uiux-card ${technical ? 'uiux-technical-card' : ''}`}>
+    {technical ? <div className="uiux-preview technical-preview"><ProjectArt type={project.visual} /></div> : <UiUxPreview type={project.visual} />}
+    <div className="uiux-card-body"><span className="uiux-number">{project.number} / {technical ? project.category : project.type}</span><h2>{project.name}</h2><p>{project.description}</p><div className="tag-row">{methods.map(method => <span key={method}>{method}</span>)}</div><a className="uiux-case-link" href={detailHref}>{technical ? 'Detail' : 'View Case Study'} <ArrowUpRight size={15} /></a></div>
+  </article>;
 }
 
 function UiUxPage() {
@@ -76,7 +81,7 @@ function UiUxPage() {
 
 function UiUxDetailPage({ project }) {
   const [menu, setMenu] = React.useState(false);
-  return <div className="site-shell uiux-detail-page"><Nav menu={menu} setMenu={setMenu} /><main className="uiux-detail container"><a className="back-link" href="/projects/ui-ux">← Back to design projects</a><span className="section-kicker">{project.number} / {project.type}</span><h1>{project.name}</h1><p className="uiux-detail-lede">{project.description}</p><div className="uiux-detail-hero"><UiUxPreview type={project.visual} /></div><div className="uiux-methods"><span>Methods & tools</span><div className="tag-row">{project.methods.map(method => <span key={method}>{method}</span>)}</div></div><div className="uiux-section-list">{project.sections.map(([title, body], index) => <section key={title}><span className="uiux-section-index">{String(index + 1).padStart(2, '0')}</span><div><h2>{title}</h2><p>{body}</p></div></section>)}</div></main></div>;
+  return <div className="site-shell uiux-detail-page"><Nav menu={menu} setMenu={setMenu} /><main className="uiux-detail container"><a className="back-link" href="/projects/ui-ux">← Back to design projects</a><span className="section-kicker">{project.number} / {project.type}</span><h1>{project.name}</h1><p className="uiux-detail-lede">{project.description}</p>{project.figmaUrl && <a className="uiux-figma-link" href={project.figmaUrl} target="_blank" rel="noopener noreferrer">View Figma Design <ArrowUpRight size={15} /></a>}<div className="uiux-detail-hero"><UiUxPreview type={project.visual} /></div><div className="uiux-methods"><span>Methods & tools</span><div className="tag-row">{project.methods.map(method => <span key={method}>{method}</span>)}</div></div><div className="uiux-section-list">{project.sections.map(([title, body], index) => <section key={title}><span className="uiux-section-index">{String(index + 1).padStart(2, '0')}</span><div><h2>{title}</h2><p>{body}</p></div></section>)}</div></main></div>;
 }
 
 function AboutPage() {
@@ -94,7 +99,7 @@ function HomepageProjects() {
   return <section id="projects" className="section homepage-projects"><div className="container">
     <div className="section-heading compact"><div><span className="section-kicker">02 / PROJECTS</span><h2>Work that makes<br /><em>an impact.</em></h2></div><p>A selection of design, development, and AI/ML work built with curiosity and care.</p></div>
     <div id="design-projects" className="homepage-project-group"><div className="homepage-project-group-heading"><span className="section-kicker">DESIGN PROJECTS</span><a className="view-all-projects" href="/projects/ui-ux">View all design projects <ArrowUpRight size={15} /></a></div><div className="uiux-grid homepage-uiux-grid">{uiUxProjects.map(project => <UiUxCard key={project.slug} project={project} />)}</div></div>
-    <div id="development-projects" className="homepage-project-group homepage-development-group"><div className="homepage-project-group-heading"><span className="section-kicker">DEVELOPMENT &amp; AI/ML</span><a className="view-all-projects" href="/projects">View all projects <ArrowUpRight size={15} /></a></div><div className="project-grid homepage-project-grid">{projects.filter(project => project.name !== 'BusEase').map((project, index) => <ProjectCard key={project.name} project={project} index={index} compact />)}</div></div>
+    <div id="development-projects" className="homepage-project-group homepage-development-group"><div className="homepage-project-group-heading"><span className="section-kicker">DEVELOPMENT &amp; AI/ML</span><a className="view-all-projects" href="/projects">View all projects <ArrowUpRight size={15} /></a></div><div className="uiux-grid homepage-uiux-grid homepage-technical-grid">{projects.filter(project => project.name !== 'BusEase').map(project => <UiUxCard key={project.name} project={project} technical />)}</div></div>
   </div></section>;
 }
 
