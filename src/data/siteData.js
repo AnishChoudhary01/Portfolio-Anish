@@ -39,7 +39,10 @@ export const projects = [
 
 export const uiUxProjects = [
   {
-    slug: 'busease', number: '01', name: 'BusEase', figmaUrl: 'https://www.figma.com/design/oIXtOdenFdDRyXbK71oKMb/BusEase?node-id=0-1&p=f&t=ghNSa9eiu9GAHgK1-0',
+    slug: 'busease', number: '01', name: 'BusEase', figmaUrl: 'https://www.figma.com/design/oIXtOdenFdDRyXbK71oKMb/BusEase?node-id=0-1&p=f&t=ghNSa9eiu9GAHgK1-0', figmaScreens: [
+      { src: '/assets/uiux/busease/Frame 1.png', caption: 'Live Bus Tracking', alt: 'BusEase live bus tracking screen' },
+     
+    ],
     type: 'Transportation UX case study',
     methods: ['Figma', 'User Research', 'Wireframing', 'Interaction Design'],
     description: 'A transportation-focused UX case study exploring clearer public-transport journeys through live bus tracking, arrival times, and seat availability.',
@@ -54,7 +57,10 @@ export const uiUxProjects = [
     visual: 'busease',
   },
   {
-    slug: 'sharecircle', number: '02', name: 'ShareCircle: Peer-to-Peer Rental Application', figmaUrl: 'https://www.figma.com/design/8n7wpSOtrrDMrAMNAcuyI7/ShareCircle?node-id=0-1&t=1GXGg1NfszROF5M6-1',
+    slug: 'sharecircle', number: '02', name: 'ShareCircle: Peer-to-Peer Rental Application', figmaUrl: 'https://www.figma.com/design/8n7wpSOtrrDMrAMNAcuyI7/ShareCircle?node-id=0-1&t=1GXGg1NfszROF5M6-1', figmaScreens: [
+      { src: '/assets/uiux/sharecircle/Frame 128.png', caption: 'Item Discovery', alt: 'ShareCircle item discovery screen' },
+      
+    ],
     type: 'Product design case study',
     methods: ['Figma', 'UI Design', 'Prototyping', 'User Flows'],
     description: 'A peer-to-peer rental marketplace concept designed to make browsing, listing, and renting personal items feel simple and trustworthy.',
@@ -67,7 +73,9 @@ export const uiUxProjects = [
     visual: 'sharecircle',
   },
   {
-    slug: 'ustart-driver-app', number: '03', name: 'UStart Driver App', figmaUrl: 'https://www.figma.com/design/F7k7ellAVINypd2xX78B1z/PS2?node-id=0-1&t=EwXsb6OX0woXBm2P-1',
+    slug: 'ustart-driver-app', number: '03', name: 'UStart Driver App', figmaUrl: 'https://www.figma.com/design/F7k7ellAVINypd2xX78B1z/PS2?node-id=0-1&t=EwXsb6OX0woXBm2P-1', figmaScreens: [
+      { src: '/assets/uiux/ustart/Cover-page.png', caption: 'Drivers-App', alt: 'UStart driver app item discovery screen' },
+    ],
     type: 'Mobile app design case study',
     methods: ['Figma', 'Mobile App Design', 'UI Animation'],
     description: 'A mobile driver experience covering onboarding, ride pickup and drop-off, payments, Help Support, and localized Hindi interface content.',
