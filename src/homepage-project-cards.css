@@ -1,0 +1,28 @@
+/* Compact shared cards for the homepage's design and development project grids. */
+.homepage-uiux-grid .uiux-preview {
+  height: 190px;
+}
+
+.homepage-uiux-grid .uiux-card-body {
+  padding: 18px;
+}
+
+.homepage-uiux-grid .uiux-card h2 {
+  font-size: 23px;
+  margin: 10px 0;
+}
+
+.homepage-uiux-grid .uiux-card p {
+  min-height: 72px;
+  font-size: 12px;
+}
+
+.homepage-uiux-grid .uiux-card .tag-row {
+  margin: 14px 0 18px;
+}
+
+@media (max-width: 600px) {
+  .homepage-uiux-grid .uiux-preview {
+    height: 210px;
+  }
+}

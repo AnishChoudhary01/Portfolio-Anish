@@ -1,0 +1,19 @@
+/* Shared title scale for UI/UX case studies only. */
+.uiux-detail h1 {
+  font-size: clamp(38px, 5vw, 82px);
+  line-height: 0.92;
+  letter-spacing: -0.075em;
+}
+
+.uiux-detail .uiux-methods {
+  margin-top: 30px;
+}
+
+.uiux-gallery-heading {
+  padding-top: 12px;
+  align-items: center;
+}
+
+.experience-card .exp-main > p {
+  margin-top: 12px;
+}
