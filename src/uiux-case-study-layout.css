@@ -1,0 +1,117 @@
+/* Shared editorial layout for all UI/UX case studies. */
+.uiux-case-study-layout {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 44px;
+  align-items: start;
+}
+
+.uiux-case-study-layout .uiux-section-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  max-width: none;
+  margin-top: 42px;
+}
+
+.uiux-case-study-layout .uiux-section-list section {
+  display: block;
+  min-width: 0;
+  padding: 22px 0 24px;
+}
+
+.uiux-case-study-layout .uiux-section-index {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.uiux-case-study-layout .uiux-section-list h2 {
+  overflow-wrap: break-word;
+}
+
+.uiux-case-study-layout .uiux-gallery {
+  margin-top: 42px;
+}
+
+@media (max-width: 1000px) {
+  .uiux-case-study-layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .uiux-case-study-layout .uiux-gallery {
+    position: static;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .uiux-case-study-layout .uiux-section-list {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* Header/gallery hero with the full-width case-study grid below. */
+.uiux-case-study-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 96px;
+  align-items: start;
+}
+
+.uiux-case-study-intro {
+  min-width: 0;
+}
+
+.uiux-case-study-hero .uiux-gallery {
+  position: sticky;
+  top: 86px;
+  min-width: 0;
+}
+
+.uiux-case-study-content {
+  margin-top: 64px;
+  padding-top: 22px;
+  border-top: 1px solid #dfe8e1;
+}
+
+.uiux-case-study-content .uiux-section-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 36px;
+  max-width: none;
+  margin-top: 0;
+}
+
+.uiux-case-study-content .uiux-section-list section {
+  display: block;
+  min-width: 0;
+  padding: 24px 0 28px;
+}
+
+.uiux-case-study-content .uiux-section-index {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.uiux-case-study-content .uiux-section-list h2 {
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 1000px) {
+  .uiux-case-study-hero {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .uiux-case-study-hero .uiux-gallery {
+    position: static;
+  }
+}
+
+@media (max-width: 700px) {
+  .uiux-case-study-content .uiux-section-list {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

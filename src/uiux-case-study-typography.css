@@ -12,6 +12,13 @@
 .uiux-gallery-heading {
   padding-top: 12px;
   align-items: center;
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 18px;
+}
+
+.uiux-gallery-figma-link {
+  margin-top: 18px;
 }
 
 .experience-card .exp-main > p {

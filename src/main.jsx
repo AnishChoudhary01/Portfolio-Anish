@@ -15,6 +15,7 @@ import './milestones.css';
 import './about-typography.css';
 import './uiux-case-study-typography.css';
 import './homepage-project-cards.css';
+import './uiux-case-study-layout.css';
 
 const Icon = ({ children, size = 17 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>;
 const ArrowDownRight = p => <Icon {...p}><path d="M7 7l10 10M17 7v10H7" /></Icon>;
@@ -86,15 +87,15 @@ function UiUxPage() {
 function UiUxGallery({ project }) {
   const screens = project.figmaScreens || [];
   return <aside className="uiux-gallery" aria-label={`${project.name} design screens`}>
-    <div className="uiux-gallery-heading"><span className="section-kicker">DESIGN SCREENS</span><span>{screens.length ? `${screens.length} screens` : 'Screens pending'}</span></div>
+    <div className="uiux-gallery-heading"><span className="section-kicker">DESIGN SCREENS</span></div>
     {screens.length ? <div className="uiux-gallery-grid">{screens.map(screen => <figure className="uiux-gallery-item" key={screen.src}><a href={screen.src} target="_blank" rel="noopener noreferrer"><img src={screen.src} alt={screen.alt || `${project.name} design screen`} /></a>{screen.caption && <figcaption>{screen.caption}</figcaption>}</figure>)}</div> : <div className="uiux-gallery-empty"><span>Figma exports ready to add</span><p>Add exported frames to <code>src/assets/uiux/{project.slug}/</code>, then list them in <code>figmaScreens</code> in <code>src/data/siteData.js</code>.</p></div>}
-    {project.figmaUrl && <a className="uiux-full-figma-link" href={project.figmaUrl} target="_blank" rel="noopener noreferrer">View Full Figma Design <ArrowUpRight size={15} /></a>}
+    {project.figmaUrl && <a className="uiux-figma-link uiux-gallery-figma-link" href={project.figmaUrl} target="_blank" rel="noopener noreferrer">View Figma Design <ArrowUpRight size={15} /></a>}
   </aside>;
 }
 
 function UiUxDetailPage({ project }) {
   const [menu, setMenu] = React.useState(false);
-  return <div className="site-shell uiux-detail-page"><Nav menu={menu} setMenu={setMenu} /><main className="uiux-detail container"><a className="back-link" href="/projects/ui-ux">← Back to design projects</a><span className="section-kicker">{project.number} / {project.type}</span><h1>{project.name}</h1><p className="uiux-detail-lede">{project.description}</p>{project.figmaUrl && <a className="uiux-figma-link" href={project.figmaUrl} target="_blank" rel="noopener noreferrer">View Figma Design <ArrowUpRight size={15} /></a>}<div className="uiux-methods"><span>Methods & tools</span><div className="tag-row">{project.methods.map(method => <span key={method}>{method}</span>)}</div></div><div className="uiux-case-study-layout"><div className="uiux-section-list">{project.sections.map(([title, body], index) => <section key={title}><span className="uiux-section-index">{String(index + 1).padStart(2, '0')}</span><div><h2>{title}</h2><p>{body}</p></div></section>)}</div><UiUxGallery project={project} /></div></main></div>;
+  return <div className="site-shell uiux-detail-page"><Nav menu={menu} setMenu={setMenu} /><main className="uiux-detail container"><div className="uiux-case-study-hero"><div className="uiux-case-study-intro"><a className="back-link" href="/projects/ui-ux">← Back to design projects</a><span className="section-kicker">{project.number} / {project.type}</span><h1>{project.name}</h1><p className="uiux-detail-lede">{project.description}</p><div className="uiux-methods"><span>Methods & tools</span><div className="tag-row">{project.methods.map(method => <span key={method}>{method}</span>)}</div></div></div><UiUxGallery project={project} /></div><div className="uiux-case-study-content"><div className="uiux-section-list">{project.sections.map(([title, body], index) => <section key={title}><span className="uiux-section-index">{String(index + 1).padStart(2, '0')}</span><div><h2>{title}</h2><p>{body}</p></div></section>)}</div></div></main></div>;
 }
 
 function AboutPage() {
